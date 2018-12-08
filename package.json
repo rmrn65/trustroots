@@ -34,6 +34,7 @@
     "migrate-down": "migrate down",
     "migrate": "migrate up",
     "postshrinkwrap": "node -e \"fs.utimesSync('./node_modules', new Date(), new Date());\"",
+    "reformat-files": "node ./bin/prettify-files.js",
     "preseed": "npm run check-environment",
     "prestart": "npm run check-environment",
     "seed:messages": "node ./bin/fillTestData/Messages.js",
@@ -194,6 +195,7 @@
     "concurrently": "~5.0.2",
     "css-loader": "~3.3.2",
     "eslint": "~6.8.0",
+    "eslint-config-prettier": "~6.5.0",
     "eslint-import-resolver-webpack": "~0.12.0",
     "eslint-loader": "~3.0.3",
     "eslint-plugin-angular": "~4.0.1",
@@ -229,9 +231,11 @@
     "nodemon": "~2.0.2",
     "npm-merge-driver": "~2.3.5",
     "postcss-loader": "~3.0.0",
+    "prettier": "~1.19.1",
     "promise": "~8.0.3",
     "proxyquire": "~2.1.3",
     "react-refresh": "~0.7.0",
+    "replace-in-file": "~4.2.0",
     "semver": "~7.1.1",
     "should": "~13.2.3",
     "sinon": "~7.5.0",
@@ -250,5 +254,10 @@
   "bugs": {
     "url": "https://github.com/Trustroots/trustroots/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run -s install-dependencies && node bin/pre-commit-hook.js"
+    }
+  }
 }
