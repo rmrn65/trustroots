@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next';
 import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 import * as languages from '@/config/languages/languages';
-import { hasConnectedAdditionalSocialAccounts, isWarmshowersId, socialAccountLink } from './utils/networks';
+import { hasConnectedAdditionalSocialAccounts, isWarmshowersId, socialAccountLink } from '@/modules/utils/networks';
 
 
 export function ProfileViewBasics({ t, profile }) {
