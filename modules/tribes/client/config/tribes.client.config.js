@@ -17,13 +17,6 @@
         templateUrl: '/modules/tribes/views/tribes-list.client.view.html',
         controller: 'TribesListController',
         controllerAs: 'tribesList',
-        resolve: {
-          // A string value resolves to a service
-          TribesService: 'TribesService',
-          tribes: function (TribesService) {
-            return TribesService.query();
-          }
-        },
         data: {
           pageTitle: 'Tribes'
         }
