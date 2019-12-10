@@ -11,11 +11,11 @@
 
     // Exposed to the view
     vm.user = Authentication.user;
-    vm.broadcastChange = function (data) {
-      if (data.tribe) {
-        $rootScope.$broadcast('tribeUpdated', data.tribe);
-      }
 
+    /**
+     * Update the Authentication.user with updated tribe membership
+     */
+    vm.broadcastUpdatedUser = function (data) {
       if (data.user) {
         Authentication.user = data.user;
         $rootScope.$broadcast('userUpdated');
@@ -24,7 +24,6 @@
 
     /**
      * Emit photo credits info
-     * @TODO remove this
      */
     vm.addPhotoCredits = function addPhotoCredits(photo) {
       $scope.$emit('photoCreditsUpdated', photo);
