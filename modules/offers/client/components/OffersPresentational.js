@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 // Internal dependencies
 import '@/config/client/i18n';
 import OfferLocation from './OfferLocation.component';
-import ReadMorePanel from '@modules/core/client/components/ReadMorePanel.component';
+import ReadMorePanel from '@modules/core/client/components/ReadMorePanel';
 
 
 export class OffersPresentational extends Component {
