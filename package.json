@@ -268,19 +268,7 @@
       "npm run lint",
       "git add"
     ],
-    "*.less": [
-      "npm run reformat-files",
-      "git add"
-    ],
-    "*.md": [
-      "npm run reformat-files",
-      "git add"
-    ],
-    "*.html": [
-      "npm run reformat-files",
-      "git add"
-    ],
-    "*.json": [
+    "*.{json,md,html}": [
       "npm run reformat-files",
       "git add"
     ]
