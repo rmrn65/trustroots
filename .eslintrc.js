@@ -1,15 +1,22 @@
+/** @format */
+
 const semver = require('semver');
 
 // Converts semver range `~16.6.0` to strict version `16.6.0`
-const reactVersion = semver.coerce(require('./package.json').dependencies.react).version;
+const reactVersion = semver.coerce(require('./package.json').dependencies.react)
+  .version;
 
-const defaultRules = {
+const rules = {
   'comma-dangle': [2, 'always-multiline'],
   'comma-spacing': [2, { before: false, after: true }],
   curly: [2, 'multi-line'],
   eqeqeq: [2, 'smart'],
   'guard-for-in': 2,
-  indent: [2, 2, { SwitchCase: 1, VariableDeclarator: { var: 2, let: 2, const: 3 } }],
+  indent: [
+    2,
+    2,
+    { SwitchCase: 1, VariableDeclarator: { var: 2, let: 2, const: 3 } },
+  ],
   'key-spacing': [2, { beforeColon: false, afterColon: true }],
   'keyword-spacing': [2, { before: true, after: true }],
   'new-cap': [2, { newIsCapExceptions: ['acl.memoryBackend', 'acl'] }],
@@ -26,12 +33,15 @@ const defaultRules = {
   'object-curly-spacing': [2, 'always'],
   'one-var': [2, 'never'],
   'one-var-declaration-per-line': [2, 'always'],
-  'semi': [2, 'always'],
-  'space-before-function-paren': ['error', {
-    'anonymous': 'always',
-    'named': 'never',
-    'asyncArrow': 'always'
-  }],
+  semi: [2, 'always'],
+  'space-before-function-paren': [
+    'error',
+    {
+      anonymous: 'always',
+      named: 'never',
+      asyncArrow: 'always',
+    },
+  ],
   'space-in-parens': [2, 'never'],
   'spaced-comment': [2, 'always'],
   strict: [2, 'never'],
@@ -42,32 +52,31 @@ const defaultRules = {
   'prefer-const': 2,
   'arrow-spacing': [2, { before: true, after: true }],
   'require-atomic-updates': 0,
-  'import/first': 2
+  'import/first': 2,
 };
 
 module.exports = {
   extends: [
     'eslint:recommended',
-    'plugin:import/errors'
+    'plugin:import/errors',
+    // Make sure these Prettier ones are last items on this list
+    'prettier',
+    'prettier/babel',
   ],
-  rules: defaultRules,
-  plugins: [
-    'angular',
-    'react',
-    'import'
-  ],
+  rules,
+  plugins: ['angular', 'react', 'import'],
   settings: {
     'import/resolver': {
       webpack: {
-        config: __dirname + '/config/webpack/webpack.config.js'
-      }
-    }
+        config: __dirname + '/config/webpack/webpack.config.js',
+      },
+    },
   },
   env: {
     es6: true,
   },
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2018,
   },
   parser: 'babel-eslint',
   overrides: [
@@ -134,7 +143,7 @@ module.exports = {
         'angular/typecheck-number': 2,
         'angular/typecheck-object': 2,
         'angular/typecheck-string': 2,
-        'angular/window-service': 2
+        'angular/window-service': 2,
       },
       settings: {
         angular: 1,
@@ -154,7 +163,7 @@ module.exports = {
       parser: 'babel-eslint',
       parserOptions: {
         ecmaVersion: 2018,
-        sourceType: 'module'
+        sourceType: 'module',
       },
     },
 
@@ -170,28 +179,34 @@ module.exports = {
         'modules/**/client/api/**',
         'modules/**/client/utils/**',
         'modules/core/client/services/photos.service.js',
-        'modules/references/tests/client/**'
+        'modules/references/tests/client/**',
       ],
       env: {
         browser: true,
       },
-      extends: 'plugin:react/recommended',
+      extends: [
+        'plugin:react/recommended',
+        // Make sure these Prettier ones are last items on this list
+        'prettier',
+        'prettier/react',
+        'prettier/babel',
+      ],
       settings: {
         react: {
-          version: reactVersion
-        }
+          version: reactVersion,
+        },
       },
       parser: 'babel-eslint',
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
+          jsx: true,
         },
         ecmaVersion: 2018,
-        sourceType: 'module'
+        sourceType: 'module',
       },
       rules: {
-        'react/no-access-state-in-setstate': 2
-      }
+        'react/no-access-state-in-setstate': 2,
+      },
     },
 
     /**
@@ -207,7 +222,7 @@ module.exports = {
         browser: true,
         jasmine: true,
         mocha: true,
-        jquery: true
+        jquery: true,
       },
       globals: {
         angular: true,
@@ -220,22 +235,23 @@ module.exports = {
      * Overrides for client side React test files
      */
     {
-      files: [
-        'modules/*/tests/client/**/components/*.test.js'
-      ],
+      files: ['modules/*/tests/client/**/components/*.test.js'],
       extends: [
         'plugin:react/recommended',
         'plugin:testing-library/react',
-        'plugin:jest-dom/recommended'
+        'plugin:jest-dom/recommended',
+        // Make sure these Prettier ones are last items on this list
+        'prettier',
+        'prettier/react',
       ],
       settings: {
         react: {
-          version: reactVersion
-        }
+          version: reactVersion,
+        },
       },
       env: {
-        jest: true
-      }
+        jest: true,
+      },
     },
 
     /**
@@ -249,19 +265,15 @@ module.exports = {
       ],
       env: {
         node: true,
-        mocha: true
-      }
+        mocha: true,
+      },
     },
 
     /**
      * Overrides for CLI scripts and application config
      */
     {
-      files: [
-        'bin/**',
-        'config/**',
-        'migrations/**',
-      ],
+      files: ['bin/**', 'config/**', 'migrations/**'],
       env: {
         node: true,
       },
@@ -270,5 +282,5 @@ module.exports = {
         'no-process-exit': 0,
       },
     },
-  ]
+  ],
 };
