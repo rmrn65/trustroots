@@ -258,7 +258,7 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run -s install-dependencies && npx lint-staged"
+      "pre-commit": "npx lint-staged"
     }
   },
   "lint-staged": {
