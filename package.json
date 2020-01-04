@@ -264,6 +264,15 @@
   "lint-staged": {
     "*.js": [
       "npm run reformat-files",
+      "npm run lint",
+      "git add"
+    ],
+    "*.less": [
+      "npm run reformat-files",
+      "git add"
+    ],
+    "*.md": [
+      "npm run reformat-files",
       "git add"
     ]
   }
