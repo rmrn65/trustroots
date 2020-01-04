@@ -274,6 +274,14 @@
     "*.md": [
       "npm run reformat-files",
       "git add"
+    ],
+    "*.html": [
+      "npm run reformat-files",
+      "git add"
+    ],
+    "*.json": [
+      "npm run reformat-files",
+      "git add"
     ]
   }
 }
