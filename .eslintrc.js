@@ -53,6 +53,7 @@ const rules = {
   'arrow-spacing': [2, { before: true, after: true }],
   'require-atomic-updates': 0,
   'import/first': 2,
+  'prettier/prettier': 2,
 };
 
 module.exports = {
@@ -60,11 +61,11 @@ module.exports = {
     'eslint:recommended',
     'plugin:import/errors',
     // Make sure these Prettier ones are last items on this list
-    'prettier',
+    'plugin:prettier/recommended',
     'prettier/babel',
   ],
   rules,
-  plugins: ['angular', 'react', 'import'],
+  plugins: ['angular', 'react', 'import', 'prettier'],
   settings: {
     'import/resolver': {
       webpack: {
@@ -187,7 +188,7 @@ module.exports = {
       extends: [
         'plugin:react/recommended',
         // Make sure these Prettier ones are last items on this list
-        'prettier',
+        'plugin:prettier/recommended',
         'prettier/react',
         'prettier/babel',
       ],
